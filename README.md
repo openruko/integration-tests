@@ -1,6 +1,6 @@
 # Integration tests
 
-It will create a new database, a new node.js project and will push it on openruko.
+It will create a new database, a new node.js project and will push it on [openruko](https://github.com/openruko).
 
 Several openruko commands are tested like:
 
