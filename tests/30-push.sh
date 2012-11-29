@@ -60,7 +60,7 @@ expect <<EOF
 EOF
 
 print "git push heroku master"
-tree
+rm -f "/home/vagrant/.ssh/known_hosts"
 git push heroku master -f
 
 print "wait 15s"
