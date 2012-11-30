@@ -19,6 +19,7 @@ expect << eof
   send -- "openruko@openruko.com\r"
   expect "Password"
   send -- "vagrant\r"
+  expect "Uploading SSH public key /home/vagrant/.ssh/id_rsa.pub."
   expect "Authentication successful."
   expect eof
 eof
