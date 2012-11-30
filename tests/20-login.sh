@@ -23,15 +23,3 @@ expect << eof
   expect "Authentication successful."
   expect eof
 eof
-
-print "destroy app (not found is ok)"
-openruko destroy --confirm keepgreen || /bin/true
-
-print "destroy app twice, App not found should be printed."
-expect << eof
-  set timeout 3 
-  spawn openruko destroy keepgreen
-  expect "App not found"
-  expect eof
-eof
-

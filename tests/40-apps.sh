@@ -52,6 +52,46 @@ git add -A
 git commit -m "first commit"
 
 
+print "list apps (should be empty)"
+expect <<EOF
+  spawn openruko apps
+  expect "You have no apps"
+  expect eof
+EOF
+
+print "create an app"
+expect <<EOF
+  spawn openruko create keepgreen
+  expect "Git remote heroku added"
+  expect eof
+EOF
+
+print "list apps (should contain keepgreen)"
+expect <<EOF
+  spawn openruko apps
+  expect "=== My Apps"
+  expect "keepgreen"
+  expect eof
+EOF
+
+print "destroy app"
+openruko destroy --confirm keepgreen || /bin/true
+
+print "list apps (should be empty)"
+expect <<EOF
+  spawn openruko apps
+  expect "You have no apps"
+  expect eof
+EOF
+
+print "destroy app twice, App not found should be printed."
+expect << eof
+  set timeout 3
+  spawn openruko destroy keepgreen
+  expect "App not found"
+  expect eof
+eof
+
 print "create an app"
 expect <<EOF
   spawn openruko create keepgreen
