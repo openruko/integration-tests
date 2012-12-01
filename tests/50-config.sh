@@ -64,5 +64,5 @@ expect << eof
   expect eof
 eof
 
-# Add a key to latter check this KEY is accessible inisde a dyno
-openruko config:set KEY1=VALUE --app keepgreen
+# Add a key to later check this KEY is accessible inisde a dyno
+openruko config:set KEY1=VALUE2 --app keepgreen

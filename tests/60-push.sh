@@ -52,5 +52,6 @@ print "logs"
 expect <<EOF
   spawn openruko logs --app keepgreen
   expect "Listening on port"
+  expect "interval 1s: VALUE2"
   expect eof
 EOF

@@ -39,7 +39,7 @@ cat >> server.js <<EOF
   app.listen(port);
   console.log('Listening on port ' + port);
   setInterval(function(){ 
-    console.log('interval');
+    console.log('interval 1s:', process.env.KEY1);
   }, 1000);
 EOF
 
