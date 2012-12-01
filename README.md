@@ -10,6 +10,8 @@ openruko logout
 openruko create
 git push heroku master
 openruko releases
+openruko config
+openruko domains
 openruko ps
 openruko logs
 ...
@@ -40,10 +42,13 @@ The easier way to launch keengreen tests is by using [vagrant-openruko](https://
 tail -f /var/log/openruko/* &
 cd tests
 ./10-restart.sh
-./20-login.sh 
-./25-create-app.sh
-./30-push.sh 
-./40-update.sh 
-./50-scale.sh
+./20-login.sh
+./30-keys.sh
+./40-apps.sh
+./50-config.sh
+./60-push.sh
+./70-domains.sh
+./80-update.sh
+./90-scale.sh
 
 ```
