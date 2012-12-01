@@ -12,6 +12,7 @@ TEST_DIR=/tmp/openruko-tests
 cd $TEST_DIR
 
 sed -i 's/Hello World/Hello World 2/g' server.js
+sed -i 's/1337/1338/g' server.js
 
 git commit -am "second commit"
 
@@ -21,10 +22,17 @@ git push heroku master
 print "wait 15s"
 sleep 15
 
-print "curl on 127.0.0.1:1337/hello.txt"
+print "curl on 127.0.0.1:1338/hello.txt"
+expect <<EOF
+  spawn curl 127.0.0.1:1338/hello.txt
+  expect "Hello World 2"
+  expect eof
+EOF
+
+print "curl the old dyno(should not respond)"
 expect <<EOF
   spawn curl 127.0.0.1:1337/hello.txt
-  expect "Hello World 2"
+  expect "couldn't connect to host"
   expect eof
 EOF
 
