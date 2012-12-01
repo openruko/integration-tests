@@ -33,15 +33,18 @@ expect <<EOF
   expect eof
 EOF
 
-print "check with openruko ps"
-openruko ps --app keepgreen |grep "web" || echo "OK keepgreen is not present"
+sleep 1
 
-print "check with a system ps"
-ps auxf | grep "node server.js" |grep -v grep|| echo "OK server is stopped"
+print "curl the old dyno(should not respond)"
+expect <<EOF
+  spawn curl 127.0.0.1:1338/hello.txt
+  expect "couldn't connect to host"
+  expect eof
+EOF
 
 print "check in the logs"
 expect <<EOF
-  spawn openruko logs
+  spawn openruko logs --app keepgreen
   expect "Scale"
   expect eof
 EOF
