@@ -35,10 +35,10 @@ cat >> server.js <<EOF
   app.get('/hello.txt', function(req, res){
     res.send('Hello World');
   });
-  var port = 1337;
+  var port = process.env.PORT;
   app.listen(port);
   console.log('Listening on port ' + port);
-  setInterval(function(){ 
+  setInterval(function(){
     console.log('interval 1s:', process.env.KEY1);
   }, 1000);
 EOF

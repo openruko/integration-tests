@@ -22,17 +22,10 @@ git push heroku master
 print "wait 15s"
 sleep 15
 
-print "curl on 127.0.0.1:1338/hello.txt"
+print "curl on keepgreen.mymachine.me:8080/hello.txt"
 expect <<EOF
-  spawn curl 127.0.0.1:1338/hello.txt
+  spawn curl keepgreen.mymachine.me:8080/hello.txt
   expect "Hello World 2"
-  expect eof
-EOF
-
-print "curl the old dyno(should not respond)"
-expect <<EOF
-  spawn curl 127.0.0.1:1337/hello.txt
-  expect "couldn't connect to host"
   expect eof
 EOF
 

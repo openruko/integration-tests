@@ -37,8 +37,8 @@ sleep 1
 
 print "curl the old dyno(should not respond)"
 expect <<EOF
-  spawn curl 127.0.0.1:1338/hello.txt
-  expect "couldn't connect to host"
+  spawn curl keepgreen.mymachine.me:8080/hello.txt
+  expect "Not found"
   expect eof
 EOF
 
