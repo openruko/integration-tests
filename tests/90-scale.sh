@@ -41,10 +41,3 @@ expect <<EOF
   expect "Not found"
   expect eof
 EOF
-
-print "check in the logs"
-expect <<EOF
-  spawn openruko logs --app keepgreen
-  expect "Scale"
-  expect eof
-EOF
