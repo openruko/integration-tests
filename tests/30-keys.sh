@@ -7,6 +7,7 @@ function print {
   echo -e "\n\e[1;36m$1\e[00m"
 }
 
+ssh_id=$(cat /home/rukosan/.ssh/id_rsa.pub | awk '{ print $(NF) }')
 
 print "list keys (should have one)"
 expect << eof
@@ -14,7 +15,7 @@ expect << eof
   expect "=== openruko@openruko.com Keys"
   expect "ssh-rsa"
   expect "..."
-  expect "rukosan@$(hostname)"
+  expect "$ssh_id"
   expect eof
 eof
 
@@ -45,14 +46,14 @@ expect << eof
   expect "=== openruko@openruko.com Keys"
   expect "ssh-rsa"
   expect "..."
-  expect "rukosan@$(hostname)"
+  expect "$ssh_id"
   expect eof
 eof
 
 
 print "keys:remove"
 expect << eof
-  spawn openruko keys:remove rukosan@$(hostname)
+  spawn openruko keys:remove $ssh_id
   expect "done"
   expect eof
 eof
