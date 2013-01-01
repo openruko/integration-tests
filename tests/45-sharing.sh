@@ -2,7 +2,7 @@
 set -e
 
 
-export PATH=$PATH:/home/vagrant/openruko/client/
+export PATH=$PATH:/home/rukosan/openruko/client/
 
 function print {
   echo -e "\n\e[1;36m$1\e[00m"
@@ -62,7 +62,7 @@ expect << eof
   expect "Email"
   send -- "openruko@openruko.com\r"
   expect "Password"
-  send -- "vagrant\r"
+  send -- "rukosan\r"
   expect "Authentication successful."
   expect eof
 eof
@@ -145,7 +145,7 @@ expect << eof
   expect "Email"
   send -- "openruko@openruko.com\r"
   expect "Password"
-  send -- "vagrant\r"
+  send -- "rukosan\r"
   expect "Authentication successful."
   expect eof
 eof

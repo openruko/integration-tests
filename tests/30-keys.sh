@@ -1,7 +1,7 @@
 # force exit on error
 set -e
 
-export PATH=$PATH:/home/vagrant/openruko/client/
+export PATH=$PATH:/home/rukosan/openruko/client/
 
 function print {
   echo -e "\n\e[1;36m$1\e[00m"
@@ -14,7 +14,7 @@ expect << eof
   expect "=== openruko@openruko.com Keys"
   expect "ssh-rsa"
   expect "..."
-  expect "vagrant@precise64"
+  expect "rukosan@$(hostname)"
   expect eof
 eof
 
@@ -35,7 +35,7 @@ eof
 print "add a key"
 expect << eof
   spawn openruko keys:add
-  expect "Uploading SSH public key /home/vagrant/.ssh/id_rsa.pub..."
+  expect "Uploading SSH public key /home/rukosan/.ssh/id_rsa.pub..."
   expect eof
 eof
 
@@ -45,14 +45,14 @@ expect << eof
   expect "=== openruko@openruko.com Keys"
   expect "ssh-rsa"
   expect "..."
-  expect "vagrant@precise64"
+  expect "rukosan@$(hostname)"
   expect eof
 eof
 
 
 print "keys:remove"
 expect << eof
-  spawn openruko keys:remove vagrant@precise64
+  spawn openruko keys:remove rukosan@$(hostname)
   expect "done"
   expect eof
 eof
@@ -67,6 +67,6 @@ eof
 print "add a key"
 expect << eof
   spawn openruko keys:add
-  expect "Uploading SSH public key /home/vagrant/.ssh/id_rsa.pub..."
+  expect "Uploading SSH public key /home/rukosan/.ssh/id_rsa.pub..."
   expect eof
 eof

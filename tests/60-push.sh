@@ -2,7 +2,7 @@
 set -e
 
 
-export PATH=$PATH:/home/vagrant/openruko/client/
+export PATH=$PATH:/home/rukosan/openruko/client/
 
 function print {
   echo -e "\n\e[1;36m$1\e[00m"
@@ -12,7 +12,7 @@ TEST_DIR=/tmp/openruko-tests
 cd $TEST_DIR
 
 print "git push heroku master"
-rm -f "/home/vagrant/.ssh/known_hosts"
+rm -f "/home/rukosan/.ssh/known_hosts"
 git push heroku master -f
 
 print "wait 15s"
