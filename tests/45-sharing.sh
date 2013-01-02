@@ -1,13 +1,3 @@
-# force exit on error
-set -e
-
-
-export PATH=$PATH:/home/rukosan/openruko/client/
-
-function print {
-  echo -e "\n\e[1;36m$1\e[00m"
-}
-
 TEST_DIR=/tmp/openruko-tests2
 rm -fr $TEST_DIR || /bin/true
 mkdir $TEST_DIR
