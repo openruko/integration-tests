@@ -1,9 +1,9 @@
-ssh_id=$(cat /home/$KG_USER/.ssh/id_rsa.pub | awk '{ print $(NF) }')
+ssh_id=$(cat ~/.ssh/id_rsa.pub | awk '{ print $(NF) }')
 
 print "list keys (should have one)"
 expect << eof
   spawn openruko keys
-  expect "=== openruko@openruko.com Keys"
+  expect "=== test@test.com Keys"
   expect "ssh-rsa"
   expect "..."
   expect "$ssh_id"
@@ -27,14 +27,14 @@ eof
 print "add a key"
 expect << eof
   spawn openruko keys:add
-  expect "Uploading SSH public key /home/$KG_USER/.ssh/id_rsa.pub..."
+  expect "Uploading SSH public key"
   expect eof
 eof
 
 print "list keys (should have one)"
 expect << eof
   spawn openruko keys
-  expect "=== openruko@openruko.com Keys"
+  expect "=== test@test.com Keys"
   expect "ssh-rsa"
   expect "..."
   expect "$ssh_id"
@@ -59,6 +59,6 @@ eof
 print "add a key"
 expect << eof
   spawn openruko keys:add
-  expect "Uploading SSH public key /home/$KG_USER/.ssh/id_rsa.pub..."
+  expect "Uploading SSH public key"
   expect eof
 eof
