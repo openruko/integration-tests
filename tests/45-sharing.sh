@@ -7,7 +7,7 @@ git init
 
 print "list sharings (should print test@test.com)"
 expect <<EOF
-  spawn openruko sharing --app keepgreen
+  spawn slotbox sharing --app slotbox-nodejs-hello-world
   expect "test@test.com"
   expect eof
 EOF
@@ -15,7 +15,7 @@ EOF
 
 print "sharing:add with invalid email (should fail)"
 expect <<EOF
-  spawn openruko sharing:add boooo@email.com --app keepgreen
+  spawn slotbox sharing:add boooo@email.com --app slotbox-nodejs-hello-world
   expect "No user with such email"
   expect eof
 EOF
@@ -25,10 +25,10 @@ psql openruko -o /dev/null -nq -c "SET search_path TO openruko_data,public; SELE
 psql openruko -o /dev/null -nq -c "SET search_path TO openruko_data,public; SELECT * FROM openruko_api.add_key(3,'ssh-rsa','aaabbb','test','aaaaaaa')" && echo "key added"
 
 print "login as friend"
-openruko logout
+slotbox logout
 expect << eof
   set timeout 3
-  spawn openruko login
+  spawn slotbox login
   expect "Email"
   send -- "friend@email.com\r"
   expect "Password"
@@ -39,16 +39,16 @@ eof
 
 print "list apps (should be empty)"
 expect <<EOF
-  spawn openruko apps
+  spawn slotbox apps
   expect "You have no apps"
   expect eof
 EOF
 
 print "login as test"
-openruko logout
+slotbox logout
 expect << eof
   set timeout 3
-  spawn openruko login
+  spawn slotbox login
   expect "Email"
   send -- "test@test.com\r"
   expect "Password"
@@ -59,44 +59,44 @@ eof
 
 print "sharing:add friend@emai.com"
 expect <<EOF
-  spawn openruko sharing:add friend@email.com --app keepgreen
-  expect "Adding friend@email.com to keepgreen collaborators... done"
+  spawn slotbox sharing:add friend@email.com --app slotbox-nodejs-hello-world
+  expect "Adding friend@email.com to slotbox-nodejs-hello-world collaborators... done"
   expect eof
 EOF
 
 print "list sharings (should print friend@email.com)"
 expect <<EOF
-  spawn openruko sharing --app keepgreen
+  spawn slotbox sharing --app slotbox-nodejs-hello-world
   expect "friend@email.com"
   expect eof
 EOF
 
 print "sharing:remove friend@emai.com"
 expect <<EOF
-  spawn openruko sharing:remove friend@email.com --app keepgreen
-  expect "Removing friend@email.com from keepgreen collaborators..."
+  spawn slotbox sharing:remove friend@email.com --app slotbox-nodejs-hello-world
+  expect "Removing friend@email.com from slotbox-nodejs-hello-world collaborators..."
   expect eof
 EOF
 
 print "remove twice to see if it still exists"
 expect <<EOF
-  spawn openruko sharing:remove friend@email.com --app keepgreen
+  spawn slotbox sharing:remove friend@email.com --app slotbox-nodejs-hello-world
   expect "not found"
   expect eof
 EOF
 
 print "sharing:add friend@emai.com"
 expect <<EOF
-  spawn openruko sharing:add friend@email.com --app keepgreen
-  expect "Adding friend@email.com to keepgreen collaborators... done"
+  spawn slotbox sharing:add friend@email.com --app slotbox-nodejs-hello-world
+  expect "Adding friend@email.com to slotbox-nodejs-hello-world collaborators... done"
   expect eof
 EOF
 
 print "login as friend"
-openruko logout
+slotbox logout
 expect << eof
   set timeout 3
-  spawn openruko login
+  spawn slotbox login
   expect "Email"
   send -- "friend@email.com\r"
   expect "Password"
@@ -105,11 +105,11 @@ expect << eof
   expect eof
 eof
 
-print "list apps (should contain keepgreen)"
+print "list apps (should contain slotbox-nodejs-hello-world)"
 expect <<EOF
-  spawn openruko apps
+  spawn slotbox apps
   expect "=== Collaborated Apps"
-  expect "keepgreen"
+  expect "slotbox-nodejs-hello-world"
   expect eof
 EOF
 
@@ -117,23 +117,23 @@ EOF
 
 # print "create an app"
 # expect <<EOF
-#   spawn openruko create friendApp
+#   spawn slotbox create friendApp
 #   expect "Git remote heroku added"
 #   expect eof
 # EOF
 
 # print "sharing:transfer test@test.com"
 # expect <<EOF
-#   spawn openruko sharing:transfer test@test.com --app keepgreen
-#   expect "Adding friend@email.com to keepgreen collaborators... done"
+#   spawn slotbox sharing:transfer test@test.com --app slotbox-nodejs-hello-world
+#   expect "Adding friend@email.com to slotbox-nodejs-hello-world collaborators... done"
 #   expect eof
 # EOF
 
 print "login as test"
-openruko logout
+slotbox logout
 expect << eof
   set timeout 3
-  spawn openruko login
+  spawn slotbox login
   expect "Email"
   send -- "test@test.com\r"
   expect "Password"
@@ -144,14 +144,14 @@ eof
 
 # print "list apps (should contain friendApp)"
 # expect <<EOF
-#   spawn openruko apps
+#   spawn slotbox apps
 #   expect "friendApp"
 #   expect eof
 # EOF
 
 # print "destroy friendApp"
 # expect <<EOF
-#   spawn openruko destroy friendApp
+#   spawn slotbox destroy friendApp
 #   expect "balbal"
 #   expect eof
 # EOF

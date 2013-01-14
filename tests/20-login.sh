@@ -1,10 +1,10 @@
 print "logout"
-openruko logout
+slotbox logout
 
 print login
 expect << eof
   set timeout 3 
-  spawn openruko login
+  spawn slotbox login
   expect "Email"
   send -- "test@test.com\r"
   expect "Password"

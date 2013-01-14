@@ -3,73 +3,38 @@ rm -fr $TEST_DIR
 mkdir $TEST_DIR
 cd $TEST_DIR
 
-cat >> package.json <<EOF
-{
-  "name": "hello-world",
-  "description": "hello world test app",
-  "version": "0.0.1",
-  "private": true,
-  "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
-  },
-  "dependencies": {
-    "express": "3.x"
-  }
-}
-EOF
+git clone git://github.com/slotbox/nodejs-hello-world.git
 
-cat >> server.js <<EOF
-  var express = require('express');
-  var app = express();
-  app.get('/hello.txt', function(req, res){
-    res.send('Hello World');
-  });
-  var port = process.env.PORT;
-  app.listen(port);
-  console.log('Listening on port ' + port);
-  setInterval(function(){
-    console.log('interval 1s:', process.env.KEY1);
-  }, 1000);
-EOF
-
-cat >> Procfile << EOF
-web: node server.js
-EOF
-
-git init
-git add -A
-git commit -m "first commit"
-
+cd nodejs-hello-world
 
 print "list apps (should be empty)"
 expect <<EOF
-  spawn openruko apps
+  spawn slotbox apps
   expect "You have no apps"
   expect eof
 EOF
 
 print "create an app"
 expect <<EOF
-  spawn openruko create keepgreen
-  expect "Git remote heroku added"
+  spawn slotbox create
+  expect "nodejs-hello-world.slotbox.local"
   expect eof
 EOF
 
-print "list apps (should contain keepgreen)"
+print "list apps (should contain slotbox-nodejs-hello-world)"
 expect <<EOF
-  spawn openruko apps
+  spawn slotbox apps
   expect "=== My Apps"
-  expect "keepgreen"
+  expect "slotbox-nodejs-hello-world"
   expect eof
 EOF
 
 print "destroy app"
-openruko destroy --confirm keepgreen || /bin/true
+slotbox destroy --confirm slotbox-nodejs-hello-world || /bin/true
 
 print "list apps (should be empty)"
 expect <<EOF
-  spawn openruko apps
+  spawn slotbox apps
   expect "You have no apps"
   expect eof
 EOF
@@ -77,14 +42,14 @@ EOF
 print "destroy app twice, App not found should be printed."
 expect << eof
   set timeout 3
-  spawn openruko destroy keepgreen
+  spawn slotbox destroy nodejs-hello-world
   expect "App not found"
   expect eof
 eof
 
 print "create an app"
 expect <<EOF
-  spawn openruko create keepgreen
-  expect "Git remote heroku added"
+  spawn slotbox create
+  expect "slotbox-nodejs-hello-world.slotbox.local"
   expect eof
 EOF

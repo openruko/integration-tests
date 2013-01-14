@@ -1,16 +1,16 @@
-print "openruko run ls ~/"
+print "slotbox run ls ~/"
 expect <<EOF
   set timeout 3 
-  spawn openruko run cat Procfile --app keepgreen
+  spawn slotbox run cat Procfile --app slotbox-nodejs-hello-world
   expect "attached to terminal... up, run.1"
-  expect "web: node server.js"
+  expect "web: node index.js"
   expect eof
 EOF
 
-print "openruko run 'env'"
+print "slotbox run 'env'"
 expect <<EOF
   set timeout 3 
-  spawn openruko run 'env' --app keepgreen
+  spawn slotbox run 'env' --app slotbox-nodejs-hello-world
   expect "KEY1=VALUE2"
   expect eof
 EOF

@@ -7,8 +7,6 @@ function print {
   echo -e "\n\e[1;36m$1\e[00m"
 }
 
-export PATH=$PATH:~/openruko/client/
+working_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-working_dir=$(pwd)
-
-for i in tests/*; do source $working_dir/"$i"; done
+for i in $working_dir/tests/*; do source "$i"; done
