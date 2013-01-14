@@ -5,8 +5,8 @@ print "slotbox deploy"
 
 slotbox deploy
 
-print "wait 10s"
-sleep 10
+print "wait 15s"
+sleep 15
 
 print "curl on slotbox-nodejs-hello-world.slotbox.local"
 expect <<EOF
