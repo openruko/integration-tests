@@ -30,3 +30,7 @@ expect <<EOF
   expect "Not found"
   expect eof
 EOF
+
+slotbox ps:scale web=1 --app slotbox-nodejs-hello-world
+
+sleep 1
