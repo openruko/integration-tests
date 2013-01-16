@@ -22,7 +22,7 @@ expect <<EOF
   expect eof
 EOF
 
-sleep 1
+sleep 3
 
 print "curl the old dyno(should not respond)"
 expect <<EOF
@@ -33,4 +33,4 @@ EOF
 
 slotbox ps:scale web=1 --app slotbox-nodejs-hello-world
 
-sleep 1
+sleep 3
