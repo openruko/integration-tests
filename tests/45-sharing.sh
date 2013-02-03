@@ -5,10 +5,10 @@ cd $TEST_DIR
 git init
 
 
-print "list sharings (should print openruko@openruko.com)"
+print "list sharings (should print test@test.com)"
 expect <<EOF
   spawn openruko sharing --app keepgreen
-  expect "openruko@openruko.com"
+  expect "test@test.com"
   expect eof
 EOF
 
@@ -44,15 +44,15 @@ expect <<EOF
   expect eof
 EOF
 
-print "login as openruko"
+print "login as test"
 openruko logout
 expect << eof
   set timeout 3
   spawn openruko login
   expect "Email"
-  send -- "openruko@openruko.com\r"
+  send -- "test@test.com\r"
   expect "Password"
-  send -- "rukosan\r"
+  send -- "test\r"
   expect "Authentication successful."
   expect eof
 eof
@@ -113,6 +113,8 @@ expect <<EOF
   expect eof
 EOF
 
+# The following tests are commented because transfering apps is not yet implemented
+
 # print "create an app"
 # expect <<EOF
 #   spawn openruko create friendApp
@@ -120,22 +122,22 @@ EOF
 #   expect eof
 # EOF
 
-# print "sharing:transfer openruko@openruko.com"
+# print "sharing:transfer test@test.com"
 # expect <<EOF
-#   spawn openruko sharing:transfer openruko@openruko.com --app keepgreen
+#   spawn openruko sharing:transfer test@test.com --app keepgreen
 #   expect "Adding friend@email.com to keepgreen collaborators... done"
 #   expect eof
 # EOF
 
-print "login as openruko"
+print "login as test"
 openruko logout
 expect << eof
   set timeout 3
   spawn openruko login
   expect "Email"
-  send -- "openruko@openruko.com\r"
+  send -- "test@test.com\r"
   expect "Password"
-  send -- "rukosan\r"
+  send -- "test\r"
   expect "Authentication successful."
   expect eof
 eof
