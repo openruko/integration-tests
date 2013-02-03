@@ -1,13 +1,4 @@
-# force exit on error
-set -e
-
-export PATH=$PATH:/home/rukosan/openruko/client/
-
-function print {
-  echo -e "\n\e[1;36m$1\e[00m"
-}
-
-ssh_id=$(cat /home/rukosan/.ssh/id_rsa.pub | awk '{ print $(NF) }')
+ssh_id=$(cat /home/$KG_USER/.ssh/id_rsa.pub | awk '{ print $(NF) }')
 
 print "list keys (should have one)"
 expect << eof
@@ -36,7 +27,7 @@ eof
 print "add a key"
 expect << eof
   spawn openruko keys:add
-  expect "Uploading SSH public key /home/rukosan/.ssh/id_rsa.pub..."
+  expect "Uploading SSH public key /home/$KG_USER/.ssh/id_rsa.pub..."
   expect eof
 eof
 
@@ -68,6 +59,6 @@ eof
 print "add a key"
 expect << eof
   spawn openruko keys:add
-  expect "Uploading SSH public key /home/rukosan/.ssh/id_rsa.pub..."
+  expect "Uploading SSH public key /home/$KG_USER/.ssh/id_rsa.pub..."
   expect eof
 eof

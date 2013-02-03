@@ -1,13 +1,3 @@
-# force exit on error
-set -e
-
-
-export PATH=$PATH:/home/rukosan/openruko/client/
-
-function print {
-  echo -e "\n\e[1;36m$1\e[00m"
-}
-
 print "list domains. (should be empty)"
 expect <<EOF
   spawn openruko domains --app keepgreen

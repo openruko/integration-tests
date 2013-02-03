@@ -1,12 +1,3 @@
-# force exit on error
-set -e
-
-export PATH=$PATH:/home/rukosan/openruko/client/
-
-function print {
-  echo -e "\n\e[1;36m$1\e[00m"
-}
-
 print "change sources"
 TEST_DIR=/tmp/openruko-tests
 cd $TEST_DIR
