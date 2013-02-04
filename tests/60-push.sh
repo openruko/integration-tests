@@ -1,6 +1,12 @@
 TEST_DIR=/tmp/openruko-tests
 cd $TEST_DIR
 
+# Travis CI is currently only 32 bit, so we need to use 32 bit node binaries for now.
+# TODO: Remove when Travis CI goes 64 bit.
+if [[ "$TRAVIS" = "true" ]]; then
+  openruko config:add BUILDPACK_URL=git://github.com/slotbox/heroku-buildpack-nodejs.git
+fi
+
 print "git push heroku master"
 rm -f "/home/rukosan/.ssh/known_hosts"
 git push heroku master -f
