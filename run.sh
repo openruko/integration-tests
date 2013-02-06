@@ -11,4 +11,5 @@ export PATH=$PATH:~/openruko/client/
 
 working_dir=$(pwd)
 
+tail -f /var/log/openruko/* &
 for i in tests/*; do source $working_dir/"$i"; done
