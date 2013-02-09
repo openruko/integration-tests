@@ -1,5 +1,6 @@
 sudo stop openruko || true
 sudo pkill node || true
+sleep 3
 dropdb openruko
 createdb openruko
 sudo start openruko
