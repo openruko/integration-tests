@@ -8,7 +8,7 @@ sed -i 's/1337/1338/g' server.js
 git commit -am "second commit"
 
 print "git push heroku master"
-git push heroku master
+git push heroku master -f || true
 
 print "wait 15s"
 sleep 15

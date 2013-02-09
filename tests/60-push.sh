@@ -9,7 +9,7 @@ fi
 
 print "git push heroku master"
 rm -f "/home/rukosan/.ssh/known_hosts"
-git push heroku master -f
+git push heroku master -f || true
 
 print "wait 15s"
 sleep 15
