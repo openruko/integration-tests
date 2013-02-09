@@ -11,4 +11,8 @@ export PATH=$PATH:~/openruko/client/
 
 working_dir=$(pwd)
 
+if [[ "$TRAVIS" = "true" ]]; then
+ tail -f /var/log/openruko/* & 
+fi
+
 for i in tests/*; do source $working_dir/"$i"; done
