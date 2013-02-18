@@ -6,11 +6,3 @@ expect <<EOF
   expect "web: node server.js"
   expect eof
 EOF
-
-print "openruko run 'env'"
-expect <<EOF
-  set timeout 3 
-  spawn openruko run 'env' --app keepgreen
-  expect "KEY1=VALUE2"
-  expect eof
-EOF
