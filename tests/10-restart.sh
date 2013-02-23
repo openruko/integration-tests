@@ -1,19 +1,12 @@
-cd ~/openruko/apiserver/postgres
-
-if [[ "$(sudo status openruko)" = "openruko start/running" ]]; then
-  sudo stop openruko
-fi
-
-if [[ "$(pgrep node)" != "" ]]; then
-  sudo pkill node
-fi
-
-# (Re)initialise
-echo -e "openruko\ntest\ntest@test.com\ntest" | ./setup
-
-# Remove slugs and repos
-rm -rf /tmp/fakes3_root/openruko
-
+sudo stop openruko || true
+sudo pkill node || true
+sleep 3
+dropdb openruko
+createdb openruko
 sudo start openruko
 
-sleep 5
+# Remove slugs and repos
+sudo rm -rf /tmp/fakes3_root/openruko
+
+sleep 10
+echo -e "test\ntest@test.com\ntest" | ~/openruko/apiserver/apiserver/bin/adduser
