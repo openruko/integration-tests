@@ -1,0 +1,8 @@
+language: bash
+before_script: 
+  - git clone --depth=1 git://github.com/slotbox/chef-slotbox.git
+  - cd chef-slotbox
+  - ruby unlock_versions.rb
+  - source bootstrap.sh
+script: sudo su - rukosan -c "./run.sh"
+
