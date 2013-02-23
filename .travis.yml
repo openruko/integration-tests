@@ -4,5 +4,5 @@ before_script:
   - cd chef-slotbox
   - ruby unlock_versions.rb
   - source bootstrap.sh
-script: sudo su - rukosan -c "./run.sh"
+script: sudo su - rukosan -c "cd /home/rukosan/openruko/integration-tests &&  ./run.sh"
 
