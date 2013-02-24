@@ -4,6 +4,7 @@ sleep 3
 dropdb openruko
 createdb openruko
 sudo start openruko
+sudo restart openruko-dynohost HEARTBEAT_INTERVAL=1000
 
 # Remove slugs and repos
 sudo rm -rf /tmp/fakes3_root/openruko

@@ -50,3 +50,11 @@ expect <<EOF
   expect "Listening on port"
   expect eof
 EOF
+
+print "heartbeats"
+heartbeats=$(psql -t openruko -c "SELECT heartbeats FROM openruko_data.app WHERE name='slotbox-nodejs-hello-world';")
+print "$heartbeats heartbeats registered"
+if [[ "$heartbeats" -lt 2 ]]; then
+  print "Heartbeats not working"
+  exit 1
+fi
