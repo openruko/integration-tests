@@ -16,3 +16,5 @@ if [[ "$TRAVIS" = "true" ]]; then
 fi
 
 for i in tests/*; do source $working_dir/"$i"; done
+
+sudo restart openruko-dynohost # Sets HEARTBEAT_INTERVAL back to normal

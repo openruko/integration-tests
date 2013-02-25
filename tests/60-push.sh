@@ -51,3 +51,11 @@ expect <<EOF
   expect "interval 1s: VALUE2"
   expect eof
 EOF
+
+print "heartbeats"
+heartbeats=$(psql -t openruko -c "SELECT heartbeats FROM openruko_data.app WHERE name='keepgreen';")
+print "$heartbeats heartbeats registered"
+if [[ "$heartbeats" -lt 2 ]]; then
+  print "Heartbeats not working"
+  exit 1
+fi
