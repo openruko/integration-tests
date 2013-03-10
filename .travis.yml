@@ -1,0 +1,8 @@
+language: bash
+before_script: 
+  - git clone --depth=1 git://github.com/openruko/vagrant-openruko.git
+  - cd vagrant-openruko
+  - ruby unlock_versions.rb
+  - source bootstrap.sh
+script: sudo su - rukosan -c "cd /home/rukosan/openruko/integration-tests &&  ./run.sh"
+
