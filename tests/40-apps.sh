@@ -59,7 +59,7 @@ EOF
 print "list apps (should contain keepgreen)"
 expect <<EOF
   spawn openruko apps
-  expect "=== My Apps"
+  expect "=== Dev & Legacy Apps"
   expect "keepgreen"
   expect eof
 EOF
